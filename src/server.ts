@@ -3,6 +3,9 @@ import swagger from '@fastify/swagger'
 import swaggerUI from '@fastify/swagger-ui'
 import { healthcheckRoutes } from './routes/healthcheck'
 import { clientRoutes } from './routes/clients'
+import { goalRoutes } from './routes/goals'
+import { walletRoutes } from './routes/wallet'
+import { alignmentRoutes } from './routes/alignment'
 
 const app = Fastify()
 
@@ -18,6 +21,12 @@ app.register(swaggerUI, {
 app.register(healthcheckRoutes)
 
 app.register(clientRoutes)
+
+app.register(goalRoutes)
+
+app.register(walletRoutes)
+
+app.register(alignmentRoutes)
 
 app.listen({ port: 3333 }, () => {
   console.log('🚀 HTTP server running on http://localhost:3333')

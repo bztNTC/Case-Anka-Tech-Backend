@@ -6,6 +6,7 @@ export const createClientSchema = z.object({
   age: z.number().int().positive(),
   status: z.boolean(),
   familyType: z.string().min(1),
+  totalWealth: z.number().nonnegative().default(0),
 })
 
 export const updateClientSchema = createClientSchema.partial()

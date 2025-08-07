@@ -14,5 +14,27 @@ model Client {
   age        Int
   status     Boolean
   familyType String
-  createdAt  DateTime @default(now())
+  totalWealth   Float    @default(0)
+  goals         Goal[]
+  wallet        Wallet[]
+  createdAt     DateTime @default(now())
+}
+
+model Goal {
+  id        String   @id @default(uuid())
+  clientId  String
+  client    Client   @relation(fields: [clientId], references: [id])
+  title     String
+  target    Float
+  targetDate DateTime
+  createdAt DateTime @default(now())
+}
+
+model Wallet {
+  id        String   @id @default(uuid())
+  clientId  String
+  client    Client   @relation(fields: [clientId], references: [id])
+  assetType String
+  percent   Float
+  createdAt DateTime @default(now())
 }
