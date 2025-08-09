@@ -7,6 +7,7 @@ import { goalRoutes } from './routes/goals'
 import { walletRoutes } from './routes/wallet'
 import { alignmentRoutes } from './routes/alignment'
 import { projectionRoutes } from './routes/projection'
+import { eventRoutes } from './routes/events'
 
 const app = Fastify()
 
@@ -31,6 +32,7 @@ app.register(alignmentRoutes)
 
 app.register(projectionRoutes)
 
+app.register(eventRoutes)
 
 app.listen({ port: 3333 }, () => {
   console.log('🚀 HTTP server running on http://localhost:3333')

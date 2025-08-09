@@ -17,6 +17,7 @@ model Client {
   totalWealth   Float    @default(0)
   goals         Goal[]
   wallet        Wallet[]
+  events       Event[]
   createdAt     DateTime @default(now())
 }
 
@@ -37,4 +38,27 @@ model Wallet {
   assetType String
   percent   Float
   createdAt DateTime @default(now())
+}
+
+enum EventFrequency {
+  ONCE
+  MONTHLY
+  ANNUAL
+}
+
+enum EventType {
+  DEPOSIT
+  WITHDRAWAL
+}
+
+model Event {
+  id         String          @id @default(uuid())
+  clientId   String
+  client     Client          @relation(fields: [clientId], references: [id])
+  type       EventType
+  value      Float           // use valor positivo; o tipo define o sinal
+  frequency  EventFrequency
+  startDate  DateTime        // quando começa a valer (para ONCE: data única)
+  endDate    DateTime?       // opcional: até quando repete (se vazio, vai até 2060)
+  createdAt  DateTime        @default(now())
 }
