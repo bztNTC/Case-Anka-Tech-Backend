@@ -19,6 +19,7 @@ model Client {
   wallet        Wallet[]
   events       Event[]
   simulations      Simulation[]
+  insurances   Insurance[]
   createdAt     DateTime @default(now())
 }
 
@@ -77,4 +78,22 @@ model Simulation {
   createdAt      DateTime @default(now())
 
   @@index([clientId, createdAt])
+}
+
+enum InsuranceType {
+  LIFE
+  DISABILITY
+}
+
+model Insurance {
+  id         String         @id @default(uuid())
+  clientId   String
+  client     Client         @relation(fields: [clientId], references: [id])
+  type       InsuranceType
+  coverage   Float          // valor segurado (cobertura)
+  premium    Float?         // prêmio mensal/anual (opcional)
+  startDate  DateTime?      // opcional
+  createdAt  DateTime       @default(now())
+
+  @@index([clientId, type])
 }
