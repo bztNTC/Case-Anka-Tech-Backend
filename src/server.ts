@@ -8,6 +8,7 @@ import { walletRoutes } from './routes/wallet'
 import { alignmentRoutes } from './routes/alignment'
 import { projectionRoutes } from './routes/projection'
 import { eventRoutes } from './routes/events'
+import { simulationRoutes } from './routes/simulations'
 
 const app = Fastify()
 
@@ -33,6 +34,8 @@ app.register(alignmentRoutes)
 app.register(projectionRoutes)
 
 app.register(eventRoutes)
+
+app.register(simulationRoutes)
 
 app.listen({ port: 3333 }, () => {
   console.log('🚀 HTTP server running on http://localhost:3333')

@@ -18,6 +18,7 @@ model Client {
   goals         Goal[]
   wallet        Wallet[]
   events       Event[]
+  simulations      Simulation[]
   createdAt     DateTime @default(now())
 }
 
@@ -61,4 +62,19 @@ model Event {
   startDate  DateTime        // quando começa a valer (para ONCE: data única)
   endDate    DateTime?       // opcional: até quando repete (se vazio, vai até 2060)
   createdAt  DateTime        @default(now())
+}
+
+model Simulation {
+  id             String   @id @default(uuid())
+  clientId       String
+  client         Client   @relation(fields: [clientId], references: [id])
+  title          String?  // opcional para identificar a simulação
+  rateAnnual     Float
+  endYear        Int
+  initialWealth  Float
+  eventsSnapshot Json     // eventos usados na simulação (snapshot)
+  result         Json     // array [{year, projectedValue}]
+  createdAt      DateTime @default(now())
+
+  @@index([clientId, createdAt])
 }
