@@ -3,8 +3,7 @@ import { prisma } from '../lib/prisma'
 import { createEventSchema, updateEventSchema } from '../schemas/event'
 
 export async function eventRoutes(app: FastifyInstance) {
-  // Create
-  app.post('/events', async (req, res) => {
+  app.post('/events', { preHandler: [app.authorize('ADVISOR')] }, async (req, res) => {
     const parsed = createEventSchema.safeParse(req.body)
     if (!parsed.success) return res.status(400).send(parsed.error)
 
@@ -18,15 +17,13 @@ export async function eventRoutes(app: FastifyInstance) {
     return res.status(201).send(event)
   })
 
-  // List by client
-  app.get('/clients/:clientId/events', async (req, res) => {
+  app.get('/clients/:clientId/events', { preHandler: [app.authenticate] }, async (req, res) => {
     const { clientId } = req.params as { clientId: string }
     const events = await prisma.event.findMany({ where: { clientId } })
     return res.send(events)
   })
 
-  // Update
-  app.put('/events/:id', async (req, res) => {
+  app.put('/events/:id', { preHandler: [app.authorize('ADVISOR')] }, async (req, res) => {
     const { id } = req.params as { id: string }
     const parsed = updateEventSchema.safeParse(req.body)
     if (!parsed.success) return res.status(400).send(parsed.error)
@@ -35,8 +32,7 @@ export async function eventRoutes(app: FastifyInstance) {
     return res.send(updated)
   })
 
-  // Delete
-  app.delete('/events/:id', async (req, res) => {
+  app.delete('/events/:id', { preHandler: [app.authorize('ADVISOR')] }, async (req, res) => {
     const { id } = req.params as { id: string }
     await prisma.event.delete({ where: { id } })
     return res.status(204).send()

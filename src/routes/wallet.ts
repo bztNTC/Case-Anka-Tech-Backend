@@ -9,8 +9,7 @@ const createWalletSchema = z.object({
 })
 
 export async function walletRoutes(app: FastifyInstance) {
-  // Adicionar item à carteira
-  app.post('/wallet', async (req, res) => {
+  app.post('/wallet', { preHandler: [app.authorize('ADVISOR')] }, async (req, res) => {
     const result = createWalletSchema.safeParse(req.body)
     if (!result.success) return res.status(400).send(result.error)
 
@@ -18,19 +17,18 @@ export async function walletRoutes(app: FastifyInstance) {
     return res.status(201).send(walletItem)
   })
 
-  // Listar carteira de um cliente
-  app.get('/clients/:clientId/wallet', async (req, res) => {
+  app.get('/clients/:clientId/wallet', { preHandler: [app.authenticate] }, async (req, res) => {
     const { clientId } = req.params as { clientId: string }
 
     const wallet = await prisma.wallet.findMany({
       where: { clientId },
+      orderBy: { createdAt: 'desc' },
     })
 
     return res.send(wallet)
   })
 
-  // Deletar item da carteira
-  app.delete('/wallet/:id', async (req, res) => {
+  app.delete('/wallet/:id', { preHandler: [app.authorize('ADVISOR')] }, async (req, res) => {
     const { id } = req.params as { id: string }
 
     await prisma.wallet.delete({ where: { id } })
