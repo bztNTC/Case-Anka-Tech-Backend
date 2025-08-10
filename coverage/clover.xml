@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1754864248450" clover="3.2.0">
+  <project timestamp="1754864248450" name="All files">
+    <metrics statements="328" coveredstatements="326" conditionals="122" coveredconditionals="114" methods="57" coveredmethods="57" elements="507" coveredelements="497" complexity="0" loc="328" ncloc="328" packages="6" files="20" classes="20"/>
+    <package name="lib">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="prisma.ts" path="C:\Users\carla\Documents\Bruno\Case Anka Tech\backend\src\lib\prisma.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="11" type="stmt"/>
+        <line num="3" count="11" type="stmt"/>
+      </file>
+    </package>
+    <package name="plugins">
+      <metrics statements="15" coveredstatements="14" conditionals="6" coveredconditionals="5" methods="4" coveredmethods="4"/>
+      <file name="jwt.ts" path="C:\Users\carla\Documents\Bruno\Case Anka Tech\backend\src\plugins\jwt.ts">
+        <metrics statements="15" coveredstatements="14" conditionals="6" coveredconditionals="5" methods="4" coveredmethods="4"/>
+        <line num="1" count="11" type="stmt"/>
+        <line num="2" count="11" type="stmt"/>
+        <line num="13" count="11" type="stmt"/>
+        <line num="14" count="53" type="stmt"/>
+        <line num="19" count="53" type="stmt"/>
+        <line num="20" count="37" type="stmt"/>
+        <line num="21" count="37" type="stmt"/>
+        <line num="23" count="5" type="stmt"/>
+        <line num="27" count="53" type="stmt"/>
+        <line num="28" count="795" type="stmt"/>
+        <line num="29" count="88" type="stmt"/>
+        <line num="30" count="88" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="34" count="88" type="cond" truecount="4" falsecount="0"/>
+        <line num="35" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="routes">
+      <metrics statements="231" coveredstatements="231" conditionals="87" coveredconditionals="84" methods="48" coveredmethods="48"/>
+      <file name="alignment.ts" path="C:\Users\carla\Documents\Bruno\Case Anka Tech\backend\src\routes\alignment.ts">
+        <metrics statements="17" coveredstatements="17" conditionals="10" coveredconditionals="10" methods="3" coveredmethods="3"/>
+        <line num="2" count="11" type="stmt"/>
+        <line num="4" count="11" type="stmt"/>
+        <line num="5" count="53" type="stmt"/>
+        <line num="9" count="6" type="stmt"/>
+        <line num="11" count="6" type="stmt"/>
+        <line num="16" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="20" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="24" count="4" type="stmt"/>
+        <line num="25" count="4" type="stmt"/>
+        <line num="27" count="4" type="stmt"/>
+        <line num="28" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="29" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="30" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="33" count="4" type="stmt"/>
+      </file>
+      <file name="auth.ts" path="C:\Users\carla\Documents\Bruno\Case Anka Tech\backend\src\routes\auth.ts">
+        <metrics statements="36" coveredstatements="36" conditionals="18" coveredconditionals="17" methods="5" coveredmethods="5"/>
+        <line num="2" count="11" type="stmt"/>
+        <line num="3" count="11" type="stmt"/>
+        <line num="4" count="11" type="stmt"/>
+        <line num="6" count="11" type="stmt"/>
+        <line num="8" count="51" type="stmt"/>
+        <line num="9" count="51" type="stmt"/>
+        <line num="12" count="53" type="stmt"/>
+        <line num="13" count="59" type="stmt"/>
+        <line num="14" count="59" type="cond" truecount="2" falsecount="0"/>
+        <line num="16" count="58" type="stmt"/>
+        <line num="17" count="58" type="cond" truecount="2" falsecount="0"/>
+        <line num="19" count="58" type="stmt"/>
+        <line num="20" count="58" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="57" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="51" type="stmt"/>
+        <line num="24" count="51" type="cond" truecount="2" falsecount="0"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="30" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="36" count="55" type="stmt"/>
+        <line num="37" count="55" type="stmt"/>
+        <line num="42" count="55" type="stmt"/>
+        <line num="45" count="53" type="stmt"/>
+        <line num="46" count="56" type="stmt"/>
+        <line num="47" count="56" type="cond" truecount="2" falsecount="0"/>
+        <line num="49" count="55" type="stmt"/>
+        <line num="50" count="55" type="stmt"/>
+        <line num="51" count="55" type="cond" truecount="2" falsecount="0"/>
+        <line num="53" count="54" type="stmt"/>
+        <line num="54" count="54" type="cond" truecount="2" falsecount="0"/>
+        <line num="56" count="53" type="stmt"/>
+        <line num="63" count="53" type="stmt"/>
+        <line num="69" count="53" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+      </file>
+      <file name="clients.ts" path="C:\Users\carla\Documents\Bruno\Case Anka Tech\backend\src\routes\clients.ts">
+        <metrics statements="25" coveredstatements="25" conditionals="6" coveredconditionals="6" methods="6" coveredmethods="6"/>
+        <line num="2" count="11" type="stmt"/>
+        <line num="3" count="11" type="stmt"/>
+        <line num="5" count="11" type="stmt"/>
+        <line num="6" count="53" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="10" count="53" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="14" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="18" count="53" type="stmt"/>
+        <line num="19" count="36" type="stmt"/>
+        <line num="20" count="36" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="35" type="stmt"/>
+        <line num="23" count="35" type="stmt"/>
+        <line num="26" count="53" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="29" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="38" count="53" type="stmt"/>
+        <line num="39" count="3" type="stmt"/>
+        <line num="40" count="3" type="stmt"/>
+        <line num="41" count="3" type="stmt"/>
+      </file>
+      <file name="events.ts" path="C:\Users\carla\Documents\Bruno\Case Anka Tech\backend\src\routes\events.ts">
+        <metrics statements="23" coveredstatements="23" conditionals="6" coveredconditionals="6" methods="5" coveredmethods="5"/>
+        <line num="2" count="11" type="stmt"/>
+        <line num="3" count="11" type="stmt"/>
+        <line num="5" count="11" type="stmt"/>
+        <line num="6" count="53" type="stmt"/>
+        <line num="7" count="8" type="stmt"/>
+        <line num="8" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="7" type="stmt"/>
+        <line num="11" count="7" type="stmt"/>
+        <line num="17" count="7" type="stmt"/>
+        <line num="20" count="53" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="26" count="53" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="29" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="35" count="53" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+      </file>
+      <file name="goals.ts" path="C:\Users\carla\Documents\Bruno\Case Anka Tech\backend\src\routes\goals.ts">
+        <metrics statements="17" coveredstatements="17" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <line num="2" count="11" type="stmt"/>
+        <line num="3" count="11" type="stmt"/>
+        <line num="5" count="11" type="stmt"/>
+        <line num="12" count="11" type="stmt"/>
+        <line num="13" count="53" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
+        <line num="15" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="5" type="stmt"/>
+        <line num="18" count="5" type="stmt"/>
+        <line num="21" count="53" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="32" count="53" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+      </file>
+      <file name="healthcheck.ts" path="C:\Users\carla\Documents\Bruno\Case Anka Tech\backend\src\routes\healthcheck.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="3" count="11" type="stmt"/>
+        <line num="4" count="53" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+      </file>
+      <file name="insurances.ts" path="C:\Users\carla\Documents\Bruno\Case Anka Tech\backend\src\routes\insurances.ts">
+        <metrics statements="35" coveredstatements="35" conditionals="14" coveredconditionals="14" methods="9" coveredmethods="9"/>
+        <line num="2" count="11" type="stmt"/>
+        <line num="3" count="11" type="stmt"/>
+        <line num="6" count="11" type="stmt"/>
+        <line num="7" count="53" type="stmt"/>
+        <line num="11" count="5" type="stmt"/>
+        <line num="12" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="24" count="4" type="stmt"/>
+        <line num="28" count="53" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="41" count="53" type="stmt"/>
+        <line num="45" count="3" type="stmt"/>
+        <line num="46" count="3" type="stmt"/>
+        <line num="47" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
+        <line num="61" count="53" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="66" count="1" type="stmt"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="71" count="53" type="stmt"/>
+        <line num="75" count="2" type="stmt"/>
+        <line num="77" count="2" type="stmt"/>
+        <line num="82" count="2" type="stmt"/>
+        <line num="83" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="84" count="1" type="stmt"/>
+        <line num="87" count="1" type="stmt"/>
+        <line num="88" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="89" count="2" type="stmt"/>
+        <line num="92" count="2" type="stmt"/>
+        <line num="98" count="1" type="stmt"/>
+      </file>
+      <file name="projection.ts" path="C:\Users\carla\Documents\Bruno\Case Anka Tech\backend\src\routes\projection.ts">
+        <metrics statements="20" coveredstatements="20" conditionals="15" coveredconditionals="14" methods="3" coveredmethods="3"/>
+        <line num="2" count="11" type="stmt"/>
+        <line num="3" count="11" type="stmt"/>
+        <line num="4" count="11" type="stmt"/>
+        <line num="6" count="11" type="stmt"/>
+        <line num="7" count="53" type="stmt"/>
+        <line num="11" count="7" type="stmt"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="14" count="7" type="stmt"/>
+        <line num="15" count="7" type="stmt"/>
+        <line num="17" count="7" type="stmt"/>
+        <line num="21" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="25" count="5" type="cond" truecount="5" falsecount="0"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="27" count="2" type="cond" truecount="3" falsecount="1"/>
+        <line num="30" count="5" type="stmt"/>
+        <line num="32" count="5" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="44" count="5" type="stmt"/>
+      </file>
+      <file name="simulations.ts" path="C:\Users\carla\Documents\Bruno\Case Anka Tech\backend\src\routes\simulations.ts">
+        <metrics statements="38" coveredstatements="38" conditionals="14" coveredconditionals="13" methods="7" coveredmethods="7"/>
+        <line num="2" count="11" type="stmt"/>
+        <line num="3" count="11" type="stmt"/>
+        <line num="4" count="11" type="stmt"/>
+        <line num="5" count="11" type="stmt"/>
+        <line num="7" count="11" type="stmt"/>
+        <line num="8" count="53" type="stmt"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="13" count="7" type="stmt"/>
+        <line num="15" count="7" type="stmt"/>
+        <line num="16" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="6" type="stmt"/>
+        <line num="19" count="6" type="stmt"/>
+        <line num="23" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="24" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="27" count="4" type="stmt"/>
+        <line num="36" count="4" type="stmt"/>
+        <line num="39" count="3" type="stmt"/>
+        <line num="49" count="4" type="stmt"/>
+        <line num="61" count="4" type="stmt"/>
+        <line num="65" count="53" type="stmt"/>
+        <line num="69" count="2" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="72" count="2" type="stmt"/>
+        <line num="85" count="2" type="stmt"/>
+        <line num="89" count="53" type="stmt"/>
+        <line num="93" count="2" type="stmt"/>
+        <line num="94" count="2" type="stmt"/>
+        <line num="96" count="2" type="stmt"/>
+        <line num="99" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="101" count="1" type="stmt"/>
+        <line num="105" count="53" type="stmt"/>
+        <line num="109" count="4" type="stmt"/>
+        <line num="110" count="4" type="stmt"/>
+        <line num="112" count="4" type="stmt"/>
+        <line num="113" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="115" count="3" type="stmt"/>
+        <line num="116" count="3" type="stmt"/>
+      </file>
+      <file name="wallet.ts" path="C:\Users\carla\Documents\Bruno\Case Anka Tech\backend\src\routes\wallet.ts">
+        <metrics statements="17" coveredstatements="17" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <line num="2" count="11" type="stmt"/>
+        <line num="3" count="11" type="stmt"/>
+        <line num="5" count="11" type="stmt"/>
+        <line num="11" count="11" type="stmt"/>
+        <line num="12" count="53" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="20" count="53" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="31" count="53" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="schemas">
+      <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="auth.ts" path="C:\Users\carla\Documents\Bruno\Case Anka Tech\backend\src\schemas\auth.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="11" type="stmt"/>
+        <line num="3" count="11" type="stmt"/>
+        <line num="10" count="11" type="stmt"/>
+      </file>
+      <file name="client.ts" path="C:\Users\carla\Documents\Bruno\Case Anka Tech\backend\src\schemas\client.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="11" type="stmt"/>
+        <line num="3" count="11" type="stmt"/>
+        <line num="12" count="11" type="stmt"/>
+      </file>
+      <file name="event.ts" path="C:\Users\carla\Documents\Bruno\Case Anka Tech\backend\src\schemas\event.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="11" type="stmt"/>
+        <line num="3" count="11" type="stmt"/>
+        <line num="12" count="11" type="stmt"/>
+      </file>
+      <file name="insurance.ts" path="C:\Users\carla\Documents\Bruno\Case Anka Tech\backend\src\schemas\insurance.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="11" type="stmt"/>
+        <line num="3" count="11" type="stmt"/>
+        <line num="11" count="11" type="stmt"/>
+      </file>
+      <file name="simulation.ts" path="C:\Users\carla\Documents\Bruno\Case Anka Tech\backend\src\schemas\simulation.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="11" type="stmt"/>
+        <line num="3" count="11" type="stmt"/>
+      </file>
+    </package>
+    <package name="tests.utils">
+      <metrics statements="35" coveredstatements="35" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="db.ts" path="C:\Users\carla\Documents\Bruno\Case Anka Tech\backend\src\tests\utils\db.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="10" type="stmt"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="4" count="52" type="stmt"/>
+      </file>
+      <file name="test-app.ts" path="C:\Users\carla\Documents\Bruno\Case Anka Tech\backend\src\tests\utils\test-app.ts">
+        <metrics statements="32" coveredstatements="32" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="11" type="stmt"/>
+        <line num="2" count="11" type="stmt"/>
+        <line num="3" count="11" type="stmt"/>
+        <line num="4" count="11" type="stmt"/>
+        <line num="5" count="11" type="stmt"/>
+        <line num="6" count="11" type="stmt"/>
+        <line num="7" count="11" type="stmt"/>
+        <line num="8" count="11" type="stmt"/>
+        <line num="9" count="11" type="stmt"/>
+        <line num="10" count="11" type="stmt"/>
+        <line num="11" count="11" type="stmt"/>
+        <line num="12" count="11" type="stmt"/>
+        <line num="13" count="11" type="stmt"/>
+        <line num="14" count="11" type="stmt"/>
+        <line num="15" count="11" type="stmt"/>
+        <line num="17" count="11" type="stmt"/>
+        <line num="18" count="53" type="stmt"/>
+        <line num="19" count="53" type="stmt"/>
+        <line num="20" count="53" type="stmt"/>
+        <line num="21" count="53" type="stmt"/>
+        <line num="22" count="53" type="stmt"/>
+        <line num="23" count="53" type="stmt"/>
+        <line num="24" count="53" type="stmt"/>
+        <line num="25" count="53" type="stmt"/>
+        <line num="26" count="53" type="stmt"/>
+        <line num="27" count="53" type="stmt"/>
+        <line num="28" count="53" type="stmt"/>
+        <line num="29" count="53" type="stmt"/>
+        <line num="30" count="53" type="stmt"/>
+        <line num="31" count="53" type="stmt"/>
+        <line num="32" count="53" type="stmt"/>
+        <line num="33" count="53" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="31" coveredstatements="30" conditionals="29" coveredconditionals="25" methods="3" coveredmethods="3"/>
+      <file name="simulateWealthWithEvents.ts" path="C:\Users\carla\Documents\Bruno\Case Anka Tech\backend\src\utils\simulateWealthWithEvents.ts">
+        <metrics statements="31" coveredstatements="30" conditionals="29" coveredconditionals="25" methods="3" coveredmethods="3"/>
+        <line num="15" count="12" type="stmt"/>
+        <line num="21" count="17" type="stmt"/>
+        <line num="22" count="17" type="stmt"/>
+        <line num="23" count="17" type="cond" truecount="3" falsecount="1"/>
+        <line num="25" count="17" type="stmt"/>
+        <line num="28" count="17" type="stmt"/>
+        <line num="29" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="30" count="10" type="stmt"/>
+        <line num="31" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="32" count="10" type="stmt"/>
+        <line num="36" count="17" type="stmt"/>
+        <line num="37" count="2388" type="stmt"/>
+        <line num="38" count="2388" type="cond" truecount="2" falsecount="0"/>
+        <line num="39" count="2308" type="cond" truecount="4" falsecount="0"/>
+        <line num="41" count="1502" type="cond" truecount="2" falsecount="0"/>
+        <line num="42" count="19" type="cond" truecount="2" falsecount="0"/>
+        <line num="44" count="1483" type="cond" truecount="2" falsecount="0"/>
+        <line num="45" count="1335" type="stmt"/>
+        <line num="47" count="148" type="cond" truecount="1" falsecount="1"/>
+        <line num="48" count="148" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="53" count="17" type="stmt"/>
+        <line num="55" count="17" type="stmt"/>
+        <line num="56" count="355" type="stmt"/>
+        <line num="58" count="4260" type="stmt"/>
+        <line num="59" count="2388" type="cond" truecount="2" falsecount="0"/>
+        <line num="60" count="1347" type="stmt"/>
+        <line num="61" count="1347" type="cond" truecount="2" falsecount="0"/>
+        <line num="65" count="4260" type="stmt"/>
+        <line num="67" count="355" type="stmt"/>
+        <line num="70" count="17" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

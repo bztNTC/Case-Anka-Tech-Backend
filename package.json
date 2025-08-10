@@ -6,7 +6,11 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "db:test:setup": "dotenv -e .env.test -- prisma migrate deploy",
+    "test": "dotenv -e .env.test -- jest --runInBand",
+    "test:watch": "dotenv -e .env.test -- jest --watch",
+    "test:coverage": "dotenv -e .env.test -- jest --coverage --runInBand"
   },
   "keywords": [],
   "author": "",
@@ -22,11 +26,18 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^3.0.0",
+    "@types/jest": "^30.0.0",
     "@types/node": "^24.2.0",
+    "@types/supertest": "^6.0.3",
     "@typescript-eslint/eslint-plugin": "^8.39.0",
     "@typescript-eslint/parser": "^8.39.0",
+    "cross-env": "^10.0.0",
+    "dotenv-cli": "^10.0.0",
     "eslint": "^9.32.0",
+    "jest": "^30.0.5",
     "prisma": "^6.13.0",
+    "supertest": "^7.1.4",
+    "ts-jest": "^29.4.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.2"
   }
