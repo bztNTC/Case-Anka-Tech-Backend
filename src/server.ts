@@ -2,7 +2,11 @@ import 'dotenv/config'
 import Fastify from 'fastify'
 import swagger from '@fastify/swagger'
 import swaggerUI from '@fastify/swagger-ui'
+import cors from '@fastify/cors'
+import helmet from '@fastify/helmet'
+import rateLimit from '@fastify/rate-limit'
 
+import { env } from './env'
 import jwtPlugin from './plugins/jwt'
 
 import { healthcheckRoutes } from './routes/healthcheck'
@@ -21,28 +25,19 @@ const app = Fastify({
   logger: true, 
 })
 
+app.register(cors, { origin: true })
+app.register(helmet)
+app.register(rateLimit, { max: 100, timeWindow: '1 minute' })
+
 app.register(swagger, {
   openapi: {
-    openapi: '3.0.0',
     info: { title: 'Planner API', version: '1.0.0' },
     components: {
       securitySchemes: {
-        bearerAuth: { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
-      },
+        bearerAuth: { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' }
+      }
     },
     security: [{ bearerAuth: [] }],
-    tags: [
-      { name: 'Auth' },
-      { name: 'Clients' },
-      { name: 'Goals' },
-      { name: 'Wallet' },
-      { name: 'Events' },
-      { name: 'Projection' },
-      { name: 'Simulations' },
-      { name: 'Insurances' },
-      { name: 'Suggestions' }, 
-      { name: 'Health' },
-    ],
   },
 })
 app.register(swaggerUI, {
@@ -64,9 +59,20 @@ app.register(simulationRoutes)
 app.register(insuranceRoutes)
 app.register(suggestionRoutes)
 
+app.setErrorHandler((err, _req, rep) => {
+  if ((err as any)?.name === 'ZodError') {
+    return rep.status(400).send({ error: 'ValidationError', details: (err as any).issues })
+  }
+  if ((err as any)?.code === 'P2002') {
+    return rep.status(409).send({ error: 'Unique constraint violated' })
+  }
+  app.log.error(err)
+  return rep.status(500).send({ error: 'Internal Server Error' })
+})
+
 async function start() {
   try {
-    const port = Number(process.env.PORT ?? 3333)
+    const port = env.PORT
     const host = '0.0.0.0'
     await app.listen({ port, host })
     console.log(`🚀 HTTP server running on http://localhost:${port}`)
