@@ -5,6 +5,7 @@ import swaggerUI from '@fastify/swagger-ui'
 import cors from '@fastify/cors'
 import helmet from '@fastify/helmet'
 import rateLimit from '@fastify/rate-limit'
+import multipart from '@fastify/multipart'
 
 import { env } from './env'
 import jwtPlugin from './plugins/jwt'
@@ -20,6 +21,7 @@ import { eventRoutes } from './routes/events'
 import { simulationRoutes } from './routes/simulations'
 import { insuranceRoutes } from './routes/insurances'
 import { suggestionRoutes } from './routes/suggestions'
+import { importRoutes } from './routes/imports'
 
 const app = Fastify({
   logger: true, 
@@ -28,6 +30,10 @@ const app = Fastify({
 app.register(cors, { origin: true })
 app.register(helmet)
 app.register(rateLimit, { max: 100, timeWindow: '1 minute' })
+
+app.register(multipart, {
+  limits: { fileSize: 10 * 1024 * 1024 },
+})
 
 app.register(swagger, {
   openapi: {
@@ -58,6 +64,7 @@ app.register(eventRoutes)
 app.register(simulationRoutes)
 app.register(insuranceRoutes)
 app.register(suggestionRoutes)
+app.register(importRoutes)
 
 app.setErrorHandler((err, _req, rep) => {
   if ((err as any)?.name === 'ZodError') {
