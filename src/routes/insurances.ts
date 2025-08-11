@@ -6,7 +6,42 @@ import { z } from 'zod'
 export async function insuranceRoutes(app: FastifyInstance) {
   app.post(
     '/insurances',
-    { preHandler: [app.authorize('ADVISOR')] },
+    {
+      preHandler: [app.authorize('ADVISOR')],
+      schema: {
+        tags: ['Insurances'],
+        security: [{ bearerAuth: [] }],
+        body: {
+          type: 'object',
+          required: ['clientId','type','coverage'],
+          properties: {
+            clientId: { type: 'string', format: 'uuid' },
+            type: { type: 'string', enum: ['LIFE','DISABILITY'] },
+            coverage: { type: 'number', minimum: 0 },
+            premium: { type: 'number', nullable: true },
+            startDate: { type: 'string', format: 'date-time', nullable: true },
+          },
+        },
+        response: {
+          201: {
+            type: 'object',
+            properties: {
+              id: { type: 'string' },
+              clientId: { type: 'string' },
+              type: { type: 'string' },
+              coverage: { type: 'number' },
+              premium: { type: 'number', nullable: true },
+              startDate: { type: 'string', nullable: true },
+              createdAt: { type: 'string' },
+            },
+            required: ['id','clientId','type','coverage','createdAt'],
+          },
+          400: { type: 'object', properties: { error: { type: 'string' } } },
+          401: { type: 'object', properties: { error: { type: 'string' } } },
+          403: { type: 'object', properties: { error: { type: 'string' } } },
+        },
+      },
+    },
     async (req, res) => {
       const parsed = createInsuranceSchema.safeParse(req.body)
       if (!parsed.success) return res.status(400).send(parsed.error)
@@ -27,7 +62,37 @@ export async function insuranceRoutes(app: FastifyInstance) {
 
   app.get(
     '/clients/:clientId/insurances',
-    { preHandler: [app.authenticate] },
+    {
+      preHandler: [app.authenticate],
+      schema: {
+        tags: ['Insurances'],
+        security: [{ bearerAuth: [] }],
+        params: {
+          type: 'object',
+          properties: { clientId: { type: 'string', format: 'uuid' } },
+          required: ['clientId'],
+        },
+        response: {
+          200: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                id: { type: 'string' },
+                clientId: { type: 'string' },
+                type: { type: 'string' },
+                coverage: { type: 'number' },
+                premium: { type: 'number', nullable: true },
+                startDate: { type: 'string', nullable: true },
+                createdAt: { type: 'string' },
+              },
+              required: ['id','clientId','type','coverage','createdAt'],
+            },
+          },
+          401: { type: 'object', properties: { error: { type: 'string' } } },
+        },
+      },
+    },
     async (req, res) => {
       const { clientId } = req.params as { clientId: string }
       const items = await prisma.insurance.findMany({
@@ -40,7 +105,48 @@ export async function insuranceRoutes(app: FastifyInstance) {
 
   app.put(
     '/insurances/:id',
-    { preHandler: [app.authorize('ADVISOR')] },
+    {
+      preHandler: [app.authorize('ADVISOR')],
+      schema: {
+        tags: ['Insurances'],
+        security: [{ bearerAuth: [] }],
+        params: {
+          type: 'object',
+          properties: { id: { type: 'string', format: 'uuid' } },
+          required: ['id'],
+        },
+        body: {
+          type: 'object',
+          description: 'Campos parciais para atualização',
+          properties: {
+            type: { type: 'string', enum: ['LIFE','DISABILITY'] },
+            coverage: { type: 'number' },
+            premium: { type: 'number', nullable: true },
+            startDate: { type: 'string', format: 'date-time', nullable: true },
+          },
+          additionalProperties: false,
+        },
+        response: {
+          200: {
+            type: 'object',
+            properties: {
+              id: { type: 'string' },
+              clientId: { type: 'string' },
+              type: { type: 'string' },
+              coverage: { type: 'number' },
+              premium: { type: 'number', nullable: true },
+              startDate: { type: 'string', nullable: true },
+              createdAt: { type: 'string' },
+            },
+            required: ['id','clientId','type','coverage','createdAt'],
+          },
+          400: { type: 'object', properties: { error: { type: 'string' } } },
+          401: { type: 'object', properties: { error: { type: 'string' } } },
+          403: { type: 'object', properties: { error: { type: 'string' } } },
+          404: { type: 'object', properties: { error: { type: 'string' } } },
+        },
+      },
+    },
     async (req, res) => {
       const { id } = req.params as { id: string }
       const parsed = updateInsuranceSchema.safeParse(req.body)
@@ -60,7 +166,24 @@ export async function insuranceRoutes(app: FastifyInstance) {
 
   app.delete(
     '/insurances/:id',
-    { preHandler: [app.authorize('ADVISOR')] },
+    {
+      preHandler: [app.authorize('ADVISOR')],
+      schema: {
+        tags: ['Insurances'],
+        security: [{ bearerAuth: [] }],
+        params: {
+          type: 'object',
+          properties: { id: { type: 'string', format: 'uuid' } },
+          required: ['id'],
+        },
+        response: {
+          204: { type: 'null', description: 'No Content' },
+          401: { type: 'object', properties: { error: { type: 'string' } } },
+          403: { type: 'object', properties: { error: { type: 'string' } } },
+          404: { type: 'object', properties: { error: { type: 'string' } } },
+        },
+      },
+    },
     async (req, res) => {
       const { id } = req.params as { id: string }
       await prisma.insurance.delete({ where: { id } })
@@ -70,7 +193,40 @@ export async function insuranceRoutes(app: FastifyInstance) {
 
   app.get(
     '/clients/:clientId/insurances/distribution',
-    { preHandler: [app.authenticate] },
+    {
+      preHandler: [app.authenticate],
+      schema: {
+        tags: ['Insurances'],
+        security: [{ bearerAuth: [] }],
+        params: {
+          type: 'object',
+          properties: { clientId: { type: 'string', format: 'uuid' } },
+          required: ['clientId'],
+        },
+        response: {
+          200: {
+            type: 'object',
+            properties: {
+              totalCoverage: { type: 'number' },
+              breakdown: {
+                type: 'array',
+                items: {
+                  type: 'object',
+                  properties: {
+                    type: { type: 'string' },
+                    coverage: { type: 'number' },
+                    percent: { type: 'number' },
+                  },
+                  required: ['type','coverage','percent'],
+                },
+              },
+            },
+            required: ['totalCoverage','breakdown'],
+          },
+          401: { type: 'object', properties: { error: { type: 'string' } } },
+        },
+      },
+    },
     async (req, res) => {
       const { clientId } = req.params as { clientId: string }
 

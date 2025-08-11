@@ -9,7 +9,37 @@ export async function authRoutes(app: FastifyInstance) {
     return count === 0
   }
 
-  app.post('/auth/signup', { preHandler: [] }, async (req, rep) => {
+  app.post('/auth/signup', {
+    preHandler: [],
+    schema: {
+      tags: ['Auth'],
+      security: [],
+      body: {
+        type: 'object',
+        required: ['name', 'email', 'password'],
+        properties: {
+          name: { type: 'string' },
+          email: { type: 'string', format: 'email' },
+          password: { type: 'string', minLength: 6 },
+          role: { type: 'string', enum: ['ADVISOR', 'VIEWER'] }
+        }
+      },
+      response: {
+        201: {
+          type: 'object',
+          properties: {
+            id: { type: 'string' },
+            name: { type: 'string' },
+            email: { type: 'string' },
+            role: { type: 'string' },
+            createdAt: { type: 'string' },
+          }
+        },
+        400: { type: 'object', properties: { error: { type: 'string' } } },
+        409: { type: 'object', properties: { error: { type: 'string' } } },
+      }
+    }
+  }, async (req, rep) => {
     const parsed = signUpSchema.safeParse(req.body)
     if (!parsed.success) return rep.status(400).send(parsed.error)
 
@@ -42,7 +72,39 @@ export async function authRoutes(app: FastifyInstance) {
     return rep.status(201).send(user)
   })
 
-  app.post('/auth/login', async (req, rep) => {
+  app.post('/auth/login', {
+    schema: {
+      tags: ['Auth'],
+      security: [], 
+      body: {
+        type: 'object',
+        required: ['email', 'password'],
+        properties: {
+          email: { type: 'string', format: 'email' },
+          password: { type: 'string', minLength: 6 },
+        }
+      },
+      response: {
+        200: {
+          type: 'object',
+          properties: {
+            token: { type: 'string' },
+            user: {
+              type: 'object',
+              properties: {
+                id: { type: 'string' },
+                name: { type: 'string' },
+                email: { type: 'string' },
+                role: { type: 'string' },
+              }
+            }
+          }
+        },
+        400: { type: 'object', properties: { error: { type: 'string' } } },
+        401: { type: 'object', properties: { error: { type: 'string' } } },
+      }
+    }
+  }, async (req, rep) => {
     const parsed = loginSchema.safeParse(req.body)
     if (!parsed.success) return rep.status(400).send(parsed.error)
 

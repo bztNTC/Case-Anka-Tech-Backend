@@ -6,7 +6,48 @@ import { simulateWealthWithEvents } from '../utils/simulateWealthWithEvents'
 export async function projectionRoutes(app: FastifyInstance) {
   app.get(
     '/clients/:id/projection',
-    { preHandler: [app.authenticate] },
+    {
+      preHandler: [app.authenticate],
+      schema: {
+        tags: ['Projection'],
+        security: [{ bearerAuth: [] }],
+        params: {
+          type: 'object',
+          properties: { id: { type: 'string', format: 'uuid' } },
+          required: ['id'],
+        },
+        querystring: {
+          type: 'object',
+          properties: {
+            rate: { type: 'string', description: 'Taxa anual (ex.: 0.04 ou 4)' },
+          },
+        },
+        response: {
+          200: {
+            type: 'object',
+            properties: {
+              clientId: { type: 'string' },
+              rateAnnual: { type: 'number' },
+              eventsCount: { type: 'integer' },
+              projection: {
+                type: 'array',
+                items: {
+                  type: 'object',
+                  properties: {
+                    year: { type: 'integer' },
+                    projectedValue: { type: 'number' },
+                  },
+                  required: ['year','projectedValue'],
+                },
+              },
+            },
+            required: ['clientId','rateAnnual','eventsCount','projection'],
+          },
+          400: { type: 'object', properties: { error: { type: 'string' } }, required: ['error'] },
+          404: { type: 'object', properties: { error: { type: 'string' } }, required: ['error'] },
+        },
+      },
+    },
     async (req, res) => {
       const paramsSchema = z.object({ id: z.string().uuid() })
       const querySchema = z.object({ rate: z.string().optional() })
